@@ -1,1 +1,278 @@
-# Devops
+# Devops# Devops
+man ls
+ls - list of directories
+pwd - present woring directory
+cd - change directory
+whoami - current user
+sudo bash - To switch to root user
+su vishnudeeli - To switch particular user
+sudo useradd username - To add another user
+sudo passwd username - To set password for 
+sudo userdel username - To delete user
+
+sudo touch filename.txt - to create a file
+sudo vi filename - To edit file
+Press escape and :wq! to save file
+
+cat --help
+cat -n filename - To show line nums
+
+sudo cp src_filename /home/dest_filename2(dest path) - To copy files from src dir to dest dir
+sudo mv src_filename /home(dest folder) - To move from sorc dir to dest dir)
+sudp rm filename  - To delete files or dirs
+
+mkdir dir_name - To create directory
+mkdir -p dir_name/filename - To create directory and file
+rmdir dir_name - To delete empty directories
+
+grep search_word filename - To search word in file
+grep search_word -i filename - To search case insensitive word in file
+
+sudo sort filename - To sort lines in file
+
+sudo chown username filename - To change the user permisions for file
+chmod Number(777) filename - TO change access permissions
+0- No Permissions
+1- Excecute
+2- Read
+4- Write
+
+id flag username - To get ids of user
+
+tar -cvf filename foldername - To Zip a file
+tar -xvf zip-tar-file - To UnZip a file
+
+cut c1-3 filename - To show 1-3 columns in each row
+
+sed 's/vishnu/ram' filename - Replaces the vishnu as ram in file
+uniq filename - To remove duplicate rows in file
+
+ssh master-ip - To get access to master node
+ssh slave-ip - To get access to slave node
+ssh-keygen - TO generate key pair
+
+ifconfig options(-a and -s) interface
+
+ip address - To show all connected Ips
+ip link - To display link layer information
+
+netstat -a - Display all ports liostening and non listening
+netstat -at	 - Display all tcp ports
+
+nslookup google.com - Useful get DNS info from server
+
+curl -o URL - To transfer data from server via any protocol(Http, FTP) and saves in local machine
+
+awk '{print}' filename - To print data line by line or to print in pattern
+awk '/test/ {print}' filename - Display lines contains test
+
+env - to display all env variables
+env -i command - To run empty env
+env -u variable-name - To remove variable from env
+
+apt-get - To install and remove packages
+syntax: sudo apt-get options command
+
+ls -ltr - shows details of each file
+man ls - show flags of ls
+man touch - show flags of touch
+
+Shell Scripting
+-------------------------
+Shell is a CLI, that takes input from user and converts into language understood by Kernel
+shell Scripting - Excecuting the list of commands in defined order
+
+df -h - disk spce
+free -g - memory
+nproc - no of cpus
+
+set -x -to run code in debug mode, differentites each cmd output
+
+ps -ef  - gives all processess running
+ps -ef | grep "amazon" - gives all processing running by amazon
+| - pipe used to get data from first command and send to next command
+interview!Q:
+date | echo "Today date" - output: Today date
+Expl: date is system default cmd, using this cmd it sends output to stdin but will not able
+	to receive from stdin. Pipe is only receive information when cmd is ready to pass information to next cmd.
+	
+ps -ef | grep "amazon" | awk -F" " '{print $2}'
+It gives only second column which contains amazon
+
+Always put at starting of file:
+set -x - debug mode 
+set -e - exit script when these is error
+set -o pipefail -exit when pipe fails
+
+Error logging:
+curl url | grep "Error" -gives all erorrs without downloading
+wget url | grep "Error" - download the file and filter errors
+
+To find file:
+sudo find / -name filename
+
+IF-ELSE
+#!/bin/bash
+a=4
+b=5
+if [ $a -gt $b ]
+then
+   echo "a is greater than b"
+else
+   echo "b is greater than a"
+fi
+
+FOR-LOOP
+#!/bin/bash
+
+a=4
+b=10
+
+for (( i=a; i<=b; i++ ))
+do
+   echo $i
+done
+
+
+trap - to trap the signal(ctrl+c is signal)
+To don't stop even press ctrl+c
+trap "rm -rf*^CSIGINT 	
+
+AccessKey  key
+Secret secret key
+
+ANSIBLE:
+******************
+ssh-keygen - generates private key
+To access key:  cat /home/vishnudeeli/.ssh/id_rsa.pub
+ssh-ed25519 <--AWS EC2 ACCESS KEY--> ubuntu@ip-172-31-34-98
+steps:
+1. sudo apt update
+2. sudo apt install ansible
+3. In Ansible server - enter ssh-keygen 
+4. In Target Server - enter ssh-keygen 
+5. Go to ~/.ssh/authorized_keys and Paste public key from ansible server in target server
+6. In Ansible server - ssh TargetIPAdress
+. Exit if you come out of server
+Ansible adhoc commands:
+1. create inventory file in /home/ubuntu/inventory
+2. Add list of Server Ips
+3. ansible -i inventory all -m shell -a "touch devopsclass" (Can give IP inplace of all)
+4. Now verify devopsclass file will be created in target IP
+
+For how 3rd command: serach for Ansible modules (to do any operations)
+Ansible adhoc cmds - for only one command
+Ansible play book - is for to execute multiple cmds
+
+Grouping servers:
+In inventory file:
+[webservers]
+Ip1
+Ip2
+[Appservers]
+Ip3
+Ip4
+
+Now if you want to up[date only webservers:
+3. ansible -i inventory webservers -m shell -a "touch devopsclass" (Can give IP inplace of all)
+
+first-playbook.yaml
+---
+- name: Install and Start nginx
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Install nginx
+      apt:
+        name: nginx
+        state: present
+
+    - name: Start nginx
+      service:
+        name: nginx
+        state: started
+
+RUn cmd: ansible-playbook -i inventory first-playbook.yaml
+check nginx in target server: 
+	sudo systemctl status nginx
+To write perfect ansible playbook use below cmd:
+ansible-galaxy role init kubernetes(or any name)
+
+Infrastucture as Code and Terraform:
+*****************************************
+IaC - Infrastructure as Code (IaC) automates cloud infrastructure setup using scripting rather than manual configurations.
+Terraform - Terraform simplifies multi-cloud infrastructure automation by using a single tool and abstracting provider-specific details.
+API as Code - Terraform utilizes API as Code to automate infrastructure setup across different cloud providers via their respective APIs.
+Terraform simplifies cloud provider migration by requiring minimal changes to its scripts when moving from one provider to another.
+Instead pf directly calling cloud APIs, terraform says that, write tearraform file then terraform will receive your request and convert ur requesst into API call
+
+Terraform Steps:
+WRITE: Define infrastructure in configuration files (search hashicorp terraforsm aws)
+PLAN: Review the changes Terraform will make your infrastructure
+APPLY: Terraform provisions your infrastructure and updates the state of file
+
+To install Terraform: 
+sudo apt-get update
+sudo apt-get install -y gnupg software-properties-common curl
+curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+sudo apt-get update
+sudo apt-get install -y terraform
+
+To create instance:
+Create local state and add data into main.tf file:
+https://github.com/iam-veeramalla/write_your_first_terraform_project/blob/main/aws/local_state/main.tf
+terraform init
+terraform plan
+terraform apply
+
+
+Terraform uses state file to track everything, but it stores in local machine.
+We should store always in remotely(Amazon S3).
+Not good idea to store in source control
+Isolate and organize the state files to reduce blast radius
+Do not manipulate the state file
+
+Drawbacks:
+-It is single file
+-Manual changes in cloud UI cannot be identified in terraform state file.
+- Not a GitOps friendly tool
+- Can become very complex to manage
+Explain terraform setup and what purpose of S3& Dynamo DB
+
+CI/CD & why Jenkins & why kubernetes
+***************************************
+00:31 CI/CD is a crucial aspect of modern software delivery, comprising Continuous Integration and Continuous Delivery.
+02:12 Continuous Integration involves integrating and testing code before delivery, while Continuous Delivery focuses on deploying code reliably and efficiently.
+09:16 Key steps in CI/CD include unit testing, static code analysis, vulnerability testing, automation testing, reporting, and deployment.
+12:58 Jenkins is a widely used CI/CD tool that automates the software delivery process by orchestrating various testing and deployment tasks.
+17:05 CI/CD pipelines can automate the promotion of applications through different stages like Dev, Staging, and Production, ensuring consistent and reliable deployments.
+23:37 Jenkins instances should ideally scale to zero when not in use to avoid unnecessary resource consumption.
+26:41 Kubernetes utilizes GitHub Actions to manage CI/CD efficiently by spinning up containers only when necessary, thus optimizing resource usage.
+29:30 CI/CD setups with Kubernetes and GitHub Actions allow for shared resources across projects, minimizing compute instance wastage during idle times.
+30:09 Kubernetes offers scalability advantages over traditional CI/CD tools like Jenkins, enabling easy node scaling based on workload demands.
+31:30 GitHub Actions provide event-driven CI/CD capabilities, contrasting with Jenkins' webhook-dependent setup, offering seamless pipeline integration across projects
+
+Access EC2-VM from local ubuntu:
+----------------------------------------------
+1. create key-pair.pem in cd ~/.ssh/
+2. copy your key and paste in key-pair.pem
+3. Run cmd: ssh -i ~/.ssh/key-pair.pem ubuntu@34.203.208.185(public IP)
+4. exit - to come out to local 
+
+JENKINS Hands on:
+folloe read.me -
+https://github.com/iam-veeramalla/Jenkins-Zero-To-Hero
+
+check port : ps -ef | grep jenkins
+sudo su -
+su - jenkins
+docker ps - to check image
+
+Github actions:
+---------------------------
+https://github.com/iam-veeramalla/GitHub-Actions-Zero-to-Hero
+
+modify file and commit changes,
+check at Repo level- green dot
