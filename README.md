@@ -276,3 +276,15 @@ https://github.com/iam-veeramalla/GitHub-Actions-Zero-to-Hero
 
 modify file and commit changes,
 check at Repo level- green dot
+
+DOCKER VS KUBERNETES
+--------------------------------------------
+Kubernetes is crucial in DevOps; job roles emphasize its importance, making it essential to learn.
+02:51 🐳 Understanding Docker basics is crucial before starting with Kubernetes, as Docker is a prerequisite for Kubernetes.
+05:10 🚀 Kubernetes is a container orchestration platform, unlike Docker, which is a container platform, providing automated management at scale.
+08:47 ⚙️ Docker's limitations include single-host dependency, lack of auto-healing, auto-scaling, and enterprise-level support, all of which Kubernetes addresses.
+19:17 🌟 Kubernetes operates in clusters, allowing for high availability and fault tolerance, unlike Docker's single-node setup in most production environments.
+22:45 🔄 Kubernetes allows scaling applications using YAML files without deploying new containers, using features like ReplicaSets and Deployment YAMLs.
+23:53 📈 Kubernetes supports Horizontal Pod Autoscaling (HPA) to automatically adjust the number of pods based on traffic, enhancing scalability.
+25:34 🛠️ Kubernetes implements Auto Healing, where it automatically replaces failed containers or pods to maintain application availability.
+28:40 🏢 Kubernetes is designed for enterprise use with robust features like load balancers, firewalls, and API gateways, unlike Docker which lacks these capabilities.
