@@ -319,6 +319,7 @@ https://github.com/iam-veeramalla/Kubernetes-Zero-to-Hero
 cmd to setup route53 -  aws route53 create-hosted-zone --name dev.vishnu-devops-practice.com --caller-reference 1
 PODS
 -------------------
+for cmds - https://kubernetes.io/docs/reference/kubectl/quick-reference/
 00:29 🚀 Understanding Kubernetes Fundamentals
 Understanding Kubernetes fundamentals is crucial before diving into application deployment.
 Kubernetes provides cluster management, auto-scaling, auto-healing, and enterprise-level capabilities.
@@ -355,3 +356,31 @@ Debugging and troubleshooting Pods using kubectl logs and kubectl describe.
 Introduction to Kubernetes Deployments for scaling and advanced management.
 Exploring future topics including auto-scaling and auto-healing capabilities.
 Differentiating Pods from Deployments in Kubernetes architecture.
+
+
+kubectl get pods -w
+kubectl get nodes
+kubectl get pod <name>
+kubectl get deploy
+kubectl get rs
+kubectl get all -A
+kubectl apply -f <pod-file>
+kubectl delete pod <pod-name>
+minikube ssh (for local minikube) 
+ssh -i <file> <node-or-ipadress> (for remote)
+-----------------------------------=-----------
+In reallive - You will create deployment-> deployment creates replica set -> rs create pods
+https://github.com/kubernetes/examples - site to get examples and to practie
+----------------------------------------------
+Deployments - RS - PODS
+------------------------
+00:56 📦 Containers run applications, managed through commands like docker run, specifying ports, volumes, and networks.
+03:18 🔄 Pods in Kubernetes can host one or more containers, sharing networking and storage, suitable for interconnected application components.
+05:40 🚀 Deployments in Kubernetes manage Pods, offering features like auto-scaling and auto-healing, crucial for maintaining application availability and managing high traffic.
+07:56 🔄 ReplicaSets ensure Kubernetes maintains the desired number of Pods, even if some fail or are deleted, crucial for reliability and fault tolerance.
+12:10 🗝️ Deployment manages ReplicaSets and Pods, automating the scaling and healing of application instances based on defined YAML specifications.
+21:53 🔄 ReplicaSets ensure continuous availability by immediately replacing terminating Pods, maintaining the desired number set by the Deployment.
+23:31 📈 ReplicaSets automatically scale Pods based on Deployment configurations, ensuring the specified number of Pods are always running.
+24:28 🔄 Kubernetes' auto-healing feature, managed by ReplicaSets, ensures that Pods are recreated swiftly when deleted, maintaining desired cluster states.
+25:10 🚀 In production, Kubernetes deployments abstract Pod management, utilizing ReplicaSets to handle Pod lifecycles and maintain application availability.
+26:50 🌐 Kubernetes facilitates zero-time deployment by smoothly transitioning between Pod configurations without disrupting live traffic, ensuring application stability.
