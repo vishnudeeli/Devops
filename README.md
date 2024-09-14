@@ -291,3 +291,67 @@ Kubernetes is crucial in DevOps; job roles emphasize its importance, making it e
 23:53 📈 Kubernetes supports Horizontal Pod Autoscaling (HPA) to automatically adjust the number of pods based on traffic, enhancing scalability.
 25:34 🛠️ Kubernetes implements Auto Healing, where it automatically replaces failed containers or pods to maintain application availability.
 28:40 🏢 Kubernetes is designed for enterprise use with robust features like load balancers, firewalls, and API gateways, unlike Docker which lacks these capabilities.
+
+KUBERNETES ARCHITECTURE - 
+------------------------
+00:30 🤔 Kubernetes is referred to as "k8s" because the word "Kubernetes" has eight letters between "K" and "s".
+01:42 🌐 Kubernetes offers advantages over Docker with features like cluster behavior, auto-healing, auto-scaling, and enterprise-level support.
+02:21 🛠️ Kubernetes architecture components include a control plane (API server, etcd, scheduler, controller manager, cloud controller manager) and a data plane (kubelet, kube-proxy, container runtime).
+04:42 🐳 In Docker, a container runs with Docker shim as the container runtime, whereas Kubernetes supports multiple container runtimes such as Docker shim, containerd, and CRI-O.
+08:55 🖥️ Kubernetes control plane components include API server for exposing Kubernetes services, scheduler for pod scheduling, etcd for cluster data storage, and controller manager for managing controllers like replica sets.
+20:36 🌍 Cloud controller manager in Kubernetes translates requests to cloud providers, enabling Kubernetes to manage cloud-specific resources like load balancers and storage.
+22:13 🧩 Kubernetes architecture involves a master and worker nodes, with worker nodes hosting components like kubelet, Q proxy, and container runtime.
+22:41 📊 API server in Kubernetes serves as the central component receiving all cluster requests, while the scheduler assigns resources across worker nodes.
+22:55 🗃️ Etcd functions as Kubernetes' key-value store, storing crucial cluster information.
+23:08 🕹️ Controller manager oversees Kubernetes' built-in controllers, ensuring tasks like pod scaling are managed.
+23:22 🌐 Cloud controller manager facilitates interactions between Kubernetes and cloud providers, adapting requests for specific provider APIs.
+DOWNLOAD KOPS
+----------------
+00:15 DevOps engineers managing Kubernetes in production require understanding Kubernetes distributions like EKS, OpenShift, and Rancher, not just local setups like MiniKube or k3s.
+01:53 Organizations using Kubernetes expect administrators to handle cluster lifecycle management, including setup and upgrades, using production-ready distributions.
+03:17 Kubernetes distributions (e.g., EKS, OpenShift) offer support and enhancements over raw Kubernetes, ensuring security patches and timely upgrades.
+12:36 DevOps engineers commonly use tools like KOPS for managing Kubernetes clusters, facilitating lifecycle operations such as installation, upgrades, and configuration.
+18:52 COPS (Kubernetes Operations) simplifies managing multiple Kubernetes clusters by utilizing AWS CLI and S3 buckets for configuration storage.
+22:35 Use a real domain name like amazon.com or your company's domain instead of "local" domains in production Kubernetes clusters.
+23:15 After creating your Kubernetes cluster, ensure to configure it properly to avoid unexpected costs or incomplete configurations.
+24:12 For production, configure your purchased domain in Route 53 to complete Kubernetes cluster setup. Use "dot KH dot local" for non-production environments or testing.
+https://github.com/iam-veeramalla/Kubernetes-Zero-to-Hero
+cmd to setup route53 -  aws route53 create-hosted-zone --name dev.vishnu-devops-practice.com --caller-reference 1
+PODS
+-------------------
+00:29 🚀 Understanding Kubernetes Fundamentals
+Understanding Kubernetes fundamentals is crucial before diving into application deployment.
+Kubernetes provides cluster management, auto-scaling, auto-healing, and enterprise-level capabilities.
+It utilizes YAML files for configuration and abstraction of container details.
+02:33 🛠️ Deploying Applications in Kubernetes Pods
+Kubernetes introduces the concept of Pods as the basic unit of deployment.
+Pods can encapsulate one or more containers and share networking and storage resources.
+YAML files specify Pod configurations, making them a declarative way to manage containers.
+06:32 📑 YAML Files and Kubernetes
+YAML files are essential in Kubernetes for defining configurations like Pods, Deployments, and Services.
+Kubernetes promotes declarative management of resources through YAML files.
+Understanding YAML syntax and structures is crucial for Kubernetes operations.
+12:32 ⌨️ Interacting with Kubernetes via kubectl
+kubectl is the command-line interface for interacting with Kubernetes clusters.
+It allows managing nodes, pods, deployments, and other resources in Kubernetes.
+Essential commands include kubectl get nodes, kubectl get pods, and kubectl apply -f.
+15:25 💻 Setting Up a Local Kubernetes Cluster with Minikube
+Minikube is a tool for running a single-node Kubernetes cluster locally.
+Useful for learning Kubernetes concepts without cloud resources.
+Installation involves straightforward steps tailored to different operating systems.
+21:39 🛠️ Installation and Configuration of Kubernetes Cluster
+Installation of Kubernetes using Minikube and Docker driver configuration.
+Configuration verification with kubectl get nodes.
+Understanding the single-node architecture of Minikube.
+22:43 📦 Deploying Your First Kubernetes Pod
+Creating a Kubernetes Pod using a YAML file.
+Explaining the structure and key components of a Pod YAML.
+Comparing Docker command equivalents (docker run) with Kubernetes Pod deployment (kubectl create -f pod.yaml).
+26:12 🚀 Accessing and Verifying Kubernetes Pod
+Accessing a running Kubernetes Pod using kubectl exec.
+Verifying Pod status and details with kubectl get pods -o wide.
+Debugging and troubleshooting Pods using kubectl logs and kubectl describe.
+29:38 🔄 Scaling and Advanced Deployment in Kubernetes
+Introduction to Kubernetes Deployments for scaling and advanced management.
+Exploring future topics including auto-scaling and auto-healing capabilities.
+Differentiating Pods from Deployments in Kubernetes architecture.
