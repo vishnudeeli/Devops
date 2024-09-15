@@ -368,6 +368,7 @@ kubectl apply -f <pod-file>
 kubectl delete pod <pod-name>
 minikube ssh (for local minikube) 
 ssh -i <file> <node-or-ipadress> (for remote)
+curl -L http://10.244.0.24:8000/demo
 -----------------------------------=-----------
 In reallive - You will create deployment-> deployment creates replica set -> rs create pods
 https://github.com/kubernetes/examples - site to get examples and to practie
@@ -384,3 +385,24 @@ Deployments - RS - PODS
 24:28 🔄 Kubernetes' auto-healing feature, managed by ReplicaSets, ensures that Pods are recreated swiftly when deleted, maintaining desired cluster states.
 25:10 🚀 In production, Kubernetes deployments abstract Pod management, utilizing ReplicaSets to handle Pod lifecycles and maintain application availability.
 26:50 🌐 Kubernetes facilitates zero-time deployment by smoothly transitioning between Pod configurations without disrupting live traffic, ensuring application stability.
+
+KUBERNETES SERVICES:
+-------------------------------------------------------------
+perfoms 3 actions: Load balancing , Service discovery and expose to external world
+There are 3 types of services: 
+1. Load balancer - public applications (Google,amazon etc)
+2. Node Port mode  - Organization applications(Zenlounge etc)
+3.Cluster IP- only who have access to clusters( developers)
+
+00:42 🔄 Kubernetes services play a crucial role in handling pods and deployments.
+02:05 🔄 Multiple replicas of a pod are necessary to handle concurrent users and requests.
+04:51 🔄 Without Kubernetes services, applications may face issues with changing IP addresses causing connectivity problems.
+07:23 🔄 Kubernetes services use load balancing to ensure requests are evenly distributed.
+13:07 🔄 Service Discovery in Kubernetes uses labels and selectors to track pods instead of IP addresses, allowing for better scalability.
+19:41 🔄 Kubernetes services can expose applications to the external world, improving accessibility for end users.
+23:19 🌐 Kubernetes services can control access to applications within an organization.
+24:01 🌍 Load balancer type services expose applications to the external world with a public IP address.
+25:39 ⚙️ Load balancer services only work on cloud providers, not local Kubernetes clusters.
+30:48 📡 Node Port mode in Kubernetes services allows access to pods for users with worker node IP addresses.
+31:32 🔄 Kubernetes services provide advantages of load balancing, service discovery, and exposing applications globally.
+curl
