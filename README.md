@@ -143,6 +143,7 @@ Secret secret key
 
 ANSIBLE:
 ******************
+- Used to automate workflows by writing scripts in playbook.yml files
 ssh-keygen - generates private key
 To access key:  cat /home/vishnudeeli/.ssh/id_rsa.pub
 ssh-ed25519 <--AWS EC2 ACCESS KEY--> ubuntu@ip-172-31-34-98
@@ -243,6 +244,8 @@ Explain terraform setup and what purpose of S3& Dynamo DB
 
 CI/CD & why Jenkins & why kubernetes
 ***************************************
+https://github.com/iam-veeramalla/Jenkins-Zero-To-Hero/
+
 00:31 CI/CD is a crucial aspect of modern software delivery, comprising Continuous Integration and Continuous Delivery.
 02:12 Continuous Integration involves integrating and testing code before delivery, while Continuous Delivery focuses on deploying code reliably and efficiently.
 09:16 Key steps in CI/CD include unit testing, static code analysis, vulnerability testing, automation testing, reporting, and deployment.
@@ -305,6 +308,7 @@ KUBERNETES ARCHITECTURE -
 22:55 🗃️ Etcd functions as Kubernetes' key-value store, storing crucial cluster information.
 23:08 🕹️ Controller manager oversees Kubernetes' built-in controllers, ensuring tasks like pod scaling are managed.
 23:22 🌐 Cloud controller manager facilitates interactions between Kubernetes and cloud providers, adapting requests for specific provider APIs.
+
 DOWNLOAD KOPS
 ----------------
 00:15 DevOps engineers managing Kubernetes in production require understanding Kubernetes distributions like EKS, OpenShift, and Rancher, not just local setups like MiniKube or k3s.
@@ -405,4 +409,3 @@ There are 3 types of services:
 25:39 ⚙️ Load balancer services only work on cloud providers, not local Kubernetes clusters.
 30:48 📡 Node Port mode in Kubernetes services allows access to pods for users with worker node IP addresses.
 31:32 🔄 Kubernetes services provide advantages of load balancing, service discovery, and exposing applications globally.
-curl
