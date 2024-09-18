@@ -1,4 +1,5 @@
 # Devops# Devops
+ssh -i ~/Downloads/ubuntuVM_key.pem azureuser@20.6.74.236
 man ls
 ls - list of directories
 pwd - present woring directory
