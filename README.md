@@ -1,5 +1,8 @@
 # Devops# Devops
 ssh -i ~/Downloads/ubuntuVM_key.pem azureuser@20.6.74.236
+ssh -i ~/Downloads/personalVM_key.pem azureuser@20.2.82.131
+sudo apt update
+sudo apt upgrade
 man ls
 ls - list of directories
 pwd - present woring directory
